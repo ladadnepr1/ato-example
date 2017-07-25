@@ -19,16 +19,17 @@ if (isset($_POST['reg'])) {
             if (mysqli_num_rows($data) == 0) {
                 $query = "INSERT INTO `users` (name,email, pass) VALUES ('$name','$email','$pass')";
                 mysqli_query($dbc, $query);
+                $sign = "<a href='signup.php'>>>>АВТОРИЗАЦИЯ<<<</a>";
                 $mes = 'Регистрация Прошла успешно!';
                 mysqli_close($dbc);
             } else {
-                $mes = 'Логин уже существует';
+                $mes_er = 'Логин уже существует';
             }
         } else {
-            $mes = 'Пароли не совпадают !';
+            $mes_er = 'Пароли не совпадают !';
         }
     } else {
-        $mes = 'Заполните все поля!';
+        $mes_er = 'Заполните все поля!';
     }
 }
 ?>
@@ -42,6 +43,8 @@ if (isset($_POST['reg'])) {
     <body>
         <div id="reg">
             <h3>Форма регистрации</h3>
+            <p class="err"><?= $mes_er ?></p>
+            <p class="norm"><?= $mes ?></p>
             <form method="POST">
                 <input type="text" name="username" placeholder="Логин">
                 <input type="email" name="email" placeholder="Email">
@@ -49,7 +52,7 @@ if (isset($_POST['reg'])) {
                 <input type="password" name="pass2" placeholder="Пароль повторно">
                 <input type="submit" name="reg" value="РЕГИСТРАЦИЯ">
             </form>
-            <p class="error"><?= $mes ?></p>
+            <div class="signup"><?= $sign ?></div>
         </div>
 
     </body>
