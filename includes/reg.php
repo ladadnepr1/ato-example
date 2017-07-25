@@ -1,7 +1,6 @@
 <?php
-//include_once 'config.php';
-//$dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
-$dbc = mysqli_connect('localhost', 'root', '', 'inform_ato_web');
+include_once 'config.php';
+$dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
  //принимаем значения с POST
 if (isset($_POST['reg'])) {   
