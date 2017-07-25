@@ -37,7 +37,7 @@ if (isset($_POST['reg'])) {
 <html>
     <head>
         <meta charset="UTF-8">
-        <link href="../style/css.css" rel="stylesheet" type="text/css"/>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
         <title>Регистрация</title>
     </head>
     <body>
