@@ -1,6 +1,7 @@
 <?php
 
 //include_once 'config.php';
+session_start();
 const DB_USER = 'root';
 const DB_PASS = '';
 const DB_NAME = 'inform_ato_web';
@@ -31,14 +32,13 @@ if (isset($_POST['sign_up'])) {
         $hash = $row['pass'];
 
         if (password_verify($password, $hash)) {
-            $_SESSION['logged_user'] = $row['name'];
+            $_SESSION['username'] = $row['name'];
             $mes_er = 'Вы авторизованы!';
             mysqli_close($dbc);
             header('Location:http://ato-example/index-all.php');
             exit;
         } else {
             $mes_er = 'Неверно введен пароль';
-            echo $row['pass'];
         }
     } else {
         $mes_er = 'Пользователь не существует!';
