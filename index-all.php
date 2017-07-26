@@ -9,6 +9,7 @@
     <body>
         <header>
             <h1>Сообщения пользователя</h1>
+            <a href="http://ato-example/includes/logout.php">ВЫЙТИ</a>
         </header>
         <main>
             <div id="lsb">
