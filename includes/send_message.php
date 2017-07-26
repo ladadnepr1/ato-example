@@ -2,25 +2,25 @@
 include_once 'config.php';
 //получаем список пользователей
 $query = 'SELECT * FROM users';
-    $result = mysqli_query($db, $query);
-    if (!$result) {
-        echo 'not result' . ' ' . mysqli_errno($db) . ' ' . mysqli_error($db);
-    } else {
-        while ($row = mysqli_fetch_assoc($result)) {
-            $res .= '<option>' . $row ['name'] . '</option>';
-        }
+$result = mysqli_query($db, $query);
+if (!$result) {
+    echo 'not result' . ' ' . mysqli_errno($db) . ' ' . mysqli_error($db);
+} else {
+    while ($row = mysqli_fetch_assoc($result)) {
+        $res .= '<option>' . $row ['name'] . '</option>';
     }
+}
 //получаем количество сообщений
 $query = 'SELECT * FROM informs';
-    $result2 = mysqli_query($db, $query);
-    if (!$result2) {
-        echo 'not result' . ' ' . mysqli_errno($db) . ' ' . mysqli_error($db);
-    } else {
-        $count=1;
-        while ($row = mysqli_fetch_assoc($result2)) {
-            $count++;
-        }
+$result2 = mysqli_query($db, $query);
+if (!$result2) {
+    echo 'not result' . ' ' . mysqli_errno($db) . ' ' . mysqli_error($db);
+} else {
+    $count = 1;
+    while ($row = mysqli_fetch_assoc($result2)) {
+        $count++;
     }
+}
 //принимаем значения с POST
 if ($_GET) {
     $users = filter_input(INPUT_GET, 'users');
@@ -34,17 +34,17 @@ if ($_GET) {
     } else {
         echo 'сообщение добавлено<br>';
     }
-    
+
     //получаем user_id
-    $query = "SELECT id FROM users WHERE name='Andriy'";
+    $query = "SELECT id FROM users WHERE name='$users'";
     $result4 = mysqli_query($db, $query);
     if (!$result4) {
         echo 'not result' . ' ' . mysqli_errno($db) . ' ' . mysqli_error($db);
     } else {
         $result4 = mysqli_fetch_assoc($result4);
-        $user_id=$result4['id'];
-        }
-    
+        $user_id = $result4['id'];
+    }
+
     //записываем в informs_users    
     $query = "INSERT INTO informs_users VALUES (NULL,'$count','$user_id')";
     $result4 = mysqli_query($db, $query);
