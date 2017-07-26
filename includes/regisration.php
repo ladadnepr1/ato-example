@@ -19,19 +19,19 @@ if (isset($_POST['reg'])) {
     $pass = password_hash($pass1, PASSWORD_BCRYPT, array('cost'=>12));
     $pass2 = mysqli_real_escape_string($dbc, trim($_POST['pass2']));
 
-    if ($name == '') {
+    if (empty($name)) {
         $errors[] = 'Введите логин!';
     }
 
-    if ($email == '') {
+    if (empty($email)) {
         $errors[] = 'Введите email!';
     }
 
-    if ($pass1 == '') {
+    if (empty($pass1)) {
         $errors[] = 'Введите пароль!';
     }
 
-    if ($pass2 == '') {
+    if (empty($pass2)) {
         $errors[] = 'Повторный пароль введен не верно!';
     }
 
@@ -52,7 +52,7 @@ if (isset($_POST['reg'])) {
     }
 
     if (empty($errors)) {
-        $query = "INSERT INTO `users` (name,email, pass) VALUES ('$name','$email','$pass')";
+        $query = "INSERT INTO `users` (name,email, pass) VALUES ('$name','$email', '$pass')";
         mysqli_query($dbc, $query);
         $sign = "<a href='signup.php'>>>>АВТОРИЗАЦИЯ<<<</a>";
         $mes = 'Регистрация Прошла успешно!';

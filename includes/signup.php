@@ -14,30 +14,31 @@ if (isset($_POST['sign_up'])) {
     $password = mysqli_real_escape_string($dbc, trim($_POST['password']));
 
 
-    if ($login == '') {
+    if (empty($login)) {
         $mes_er = 'Введите логин!';
     }
 
 
-    if ($password == '') {
+    if (empty($password)) {
         $mes_er = 'Введите пароль!';
     }
 
-    $query = "SELECT * FROM `users` WHERE name = '$login'";
+            $query = "SELECT * FROM `users` WHERE name = '$login'";
     $data = mysqli_query($dbc, $query);
 
     if (mysqli_num_rows($data) == 1) {
         $row = mysqli_fetch_assoc($data);
-        $hash=$row['pass'];
-        
-        if (password_verify( $password, $hash)) {
+        $hash = $row['pass'];
+
+        if (password_verify($password, $hash)) {
             $_SESSION['logged_user'] = $row['name'];
             $mes_er = 'Вы авторизованы!';
             mysqli_close($dbc);
             header('Location:http://ato-example/index-all.php');
-  exit;
+            exit;
         } else {
             $mes_er = 'Неверно введен пароль';
+            echo $row['pass'];
         }
     } else {
         $mes_er = 'Пользователь не существует!';
