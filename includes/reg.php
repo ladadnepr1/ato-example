@@ -1,5 +1,6 @@
 <?php
 include_once 'config.php';
+$dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
 //принимаем значения с POST
 if (isset($_POST['reg'])) {
@@ -19,7 +20,7 @@ if (isset($_POST['reg'])) {
                 $query = "INSERT INTO `users` (name,email, pass) VALUES ('$name','$email','$pass')";
                 mysqli_query($dbc, $query);
                 $sign = "<a href='signup.php'>>>>АВТОРИЗАЦИЯ<<<</a>";
-                $mes = 'Сообщение отправлено успешно!';
+                $mes = 'Регистрация Прошла успешно!';
                 mysqli_close($dbc);
             } else {
                 $mes_er = 'Логин уже существует';

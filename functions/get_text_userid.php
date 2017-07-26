@@ -1,5 +1,5 @@
 <?php
-include_once '/includes/config.php';
+include_once '../includes/config.php';
 //функция принимает базу данных и номер пользователя
 // возвращает выборку заголовки и текст сообщений для пользователя id
 function show_text_userid($db,$userid){

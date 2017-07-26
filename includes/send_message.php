@@ -1,34 +1,59 @@
 <?php
 include_once 'config.php';
-
-//принимаем значения с POST
-if (isset($_POST['reg'])) {
-    $name = mysqli_real_escape_string($db, trim($_POST['username']));
-    $email = mysqli_real_escape_string($db, trim($_POST['email']));
-    $pass = mysqli_real_escape_string($db, trim($_POST['pass']));
-    $pass2 = mysqli_real_escape_string($db, trim($_POST['pass2']));
-
-    //проверка на пустые поля
-    if (!empty($name) && !empty($email) && !empty($pass) && !empty($pass2)) {
-        //проверка на совпадение паролей
-        if ($pass == $pass2) {
-            //проверка на совпадение логина
-            $query = "SELECT * FROM `users` WHERE name = '$name'";
-            $data = mysqli_query($db, $query);
-            if (mysqli_num_rows($data) == 0) {
-                $query = "INSERT INTO `users` (name,email, pass) VALUES ('$name','$email','$pass')";
-                mysqli_query($dbc, $query);
-                $sign = "<a href='signup.php'>>>>АВТОРИЗАЦИЯ<<<</a>";
-                $mes = 'Регистрация Прошла успешно!';
-                mysqli_close($dbc);
-            } else {
-                $mes_er = 'Логин уже существует';
-            }
-        } else {
-            $mes_er = 'Пароли не совпадают !';
-        }
+//получаем список пользователей
+$query = 'SELECT * FROM users';
+    $result = mysqli_query($db, $query);
+    if (!$result) {
+        echo 'not result' . ' ' . mysqli_errno($db) . ' ' . mysqli_error($db);
     } else {
-        $mes_er = 'Заполните все поля!';
+        while ($row = mysqli_fetch_assoc($result)) {
+            $res .= '<option>' . $row ['name'] . '</option>';
+        }
+        //echo $res;
+    }
+//получаем количество сообщений
+$query = 'SELECT * FROM informs';
+    $result2 = mysqli_query($db, $query);
+    if (!$result2) {
+        echo 'not result' . ' ' . mysqli_errno($db) . ' ' . mysqli_error($db);
+    } else {
+        $count=1;
+        while ($row = mysqli_fetch_assoc($result2)) {
+            $count++;
+        }
+        //echo $count;
+    }
+//принимаем значения с POST
+if ($_GET) {
+    $users = filter_input(INPUT_GET, 'users');
+    $title = filter_input(INPUT_GET, 'title');
+    $text = filter_input(INPUT_GET, 'text');
+    //записываем сообщение
+    $query = "INSERT INTO informs VALUES ($count,'$title','$text')";
+    $result3 = mysqli_query($db, $query);
+    if (!$result3) {
+        echo 'not result' . ' ' . mysqli_errno($db) . ' ' . mysqli_error($db);
+    } else {
+        echo 'сообщение добавлено<br>';
+    }
+    
+    //получаем user_id
+    $query = "SELECT id FROM users WHERE name='Andriy'";
+    $result4 = mysqli_query($db, $query);
+    if (!$result4) {
+        echo 'not result' . ' ' . mysqli_errno($db) . ' ' . mysqli_error($db);
+    } else {
+        $result4 = mysqli_fetch_assoc($result4);
+        $user_id=$result4['id'];
+        }
+    
+    //записываем в informs_users    
+    $query = "INSERT INTO informs_users VALUES (NULL,'$count','$user_id')";
+    $result4 = mysqli_query($db, $query);
+    if (!$result4) {
+        echo 'not result' . ' ' . mysqli_errno($db) . ' ' . mysqli_error($db);
+    } else {
+        echo 'сообщение связано с юзером<br>';
     }
 }
 ?>
@@ -44,13 +69,22 @@ if (isset($_POST['reg'])) {
             <h3>Форма отправки сообщения</h3>
             <p class="err"><?= $mes_er ?></p>
             <p class="norm"><?= $mes ?></p>
-            <form method="POST">
+            <form action="#" method="GET" name="message">
                 <label>Выберите пользователей:
-                    <select size="1" multiple name="users">
-                        <option><?php ?> User1</option>
+                    <select size="2" multiple name="users">
+                        <?php echo $res; ?>
                     </select>
-                </label><br/><br/>
-                <input type="submit" name="reg" value="Отправить сообщение">
+                </label>
+                <br/><br/>
+                <label>Заголовок сообщения:
+                    <input type="text" name="title"/>
+                </label>
+                <br/><br/>
+                <label>Текст сообщения:
+                    <textarea rows="10" cols="45" name="text"></textarea>
+                </label>
+                <br/><br/>
+                <input type="submit" value="Отправить сообщение">
             </form>
             <div class="signup"><?= $sign ?></div>
         </div>
