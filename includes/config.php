@@ -19,7 +19,7 @@ if($files){
     }
 }
 // открытие сессии 
-session_start();
+//session_start();
 
 
 
