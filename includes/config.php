@@ -13,7 +13,6 @@ if($files){
     foreach($files as $value){
         
         if(!($value=='.'|| $value=='..' || is_null ($value))){
-            var_dump($value);
             include_once $path_functions.$value;
         }
     }
