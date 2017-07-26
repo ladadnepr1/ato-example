@@ -1,10 +1,10 @@
 <?php
 
-//include_once 'config.php';
-const DB_USER = 'root';
-const DB_PASS = '';
-const DB_NAME = 'inform_ato_web';
-const DB_HOST = 'localhost';
+include_once 'config.php';
+//const DB_USER = 'root';
+//const DB_PASS = '';
+//const DB_NAME = 'inform_ato_web';
+//const DB_HOST = 'localhost';
 $dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
 //принимаем значения с POST
@@ -48,7 +48,7 @@ if (isset($_POST['reg'])) {
     $qwert = "SELECT * FROM `users` WHERE email = '$email'";
     $dt = mysqli_query($dbc, $qwert);
     if (mysqli_num_rows($dt) >= 1) {
-        $errors[] = 'Пользовталь с таким email уже зарегистрирован';
+        $errors[] = 'Пользователь с таким email уже зарегистрирован';
     }
 
     if (empty($errors)) {
