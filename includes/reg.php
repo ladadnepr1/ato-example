@@ -38,6 +38,7 @@ if (isset($_POST['reg'])) {
     <head>
         <meta charset="UTF-8">
         <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+        <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
         <title>Регистрация</title>
     </head>
     <body>

@@ -1,10 +1,15 @@
 *{
     margin: 0;
     padding: 0;
+    border-box:none;
 }
 body{
-    width: 100%;
+	width: 100%;
+	height: 100vh;
+	background: #DEE1E5;
 }
+
+/* === РЕГИСТРАЦИЯ === */
 #reg {
     font-family: verdana;
     font-size: 18px;
@@ -80,3 +85,85 @@ body{
     border: 1px solid #578843;
 }
 
+/* === стайлы для index === */
+header{
+	width: 80%;
+	height: 65px;
+	background: #424B5F;
+	color: #FFF;
+	text-align: center;
+	margin: auto;
+}
+header h1{
+	padding-top: 10px;
+}
+
+main{
+	width: 80%;
+	margin: auto;
+}
+
+#lsb{
+	width: 20%;
+	float:left;
+	background: #4F5A6E;
+	color: #fff;
+	text-align: center;
+	font-size: 18px;
+	height: 100vh;
+}
+#lsb ul{
+	list-style-type: none;
+}
+#lsb li:first-child{
+	padding-top: 80px;
+}
+#lsb li{
+	text-decoration: none;
+}
+	#lsb li a{
+	text-decoration: none;
+	width: 100%;
+	height: 40px;
+	display: block;
+	line-height: 40px;
+}
+	#lsb li a:hover{
+	background: #606d86;
+	color: #1BA8ED!important;
+}
+#lsb .read li a{
+	color:#a7b3cb;
+}
+#lsb .not_read li a{
+	color:#fff;
+}
+#lsb .read li:first-child{
+	padding-top: 10px;
+}
+
+content{
+	width: 80%;
+	background: #FFF;
+	float:right;
+	text-align: center;
+	margin: auto;
+	font-size: 18px;
+	height: 100vh;
+}
+ .username h3{
+ 	padding-top: 30px;
+ 	font-size: 33px;
+ 	text-transform: uppercase;
+ }
+  .title p{
+ 	padding: 20px;
+ 	font-size: 24px;
+ 	text-decoration: underline;
+ }
+   .text p{
+ 	padding: 20px;
+ 	font-size: 18px;
+ }
+ 
+ /* =====================*/
