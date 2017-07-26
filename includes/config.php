@@ -5,13 +5,13 @@ const DB_PASS = '';
 // вставить имя базы данных
 const DB_NAME = 'inform_ato_web';
 const DB_HOST = 'localhost';
-$path_functions=$_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'functions';
-$files=scandir($path_functions);
-if($files){
-    foreach($files as $value){
-        include_once $value;
-    }
-}
+//$path_functions=$_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'functions';
+//$files=scandir($path_functions);
+//if($files){
+//    foreach($files as $value){
+//        include_once $value;
+//    }
+//}
 
 
 
