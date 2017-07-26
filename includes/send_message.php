@@ -4,7 +4,7 @@ include_once 'config.php';
 $query = 'SELECT * FROM users';
 $result = mysqli_query($db, $query);
 if (!$result) {
-    echo 'not result' . ' ' . mysqli_errno($db) . ' ' . mysqli_error($db);
+    $mes_error.= 'not result' . ' ' . mysqli_errno($db) . ' ' . mysqli_error($db);
 } else {
     while ($row = mysqli_fetch_assoc($result)) {
         $res .= '<option>' . $row ['name'] . '</option>';
@@ -14,7 +14,7 @@ if (!$result) {
 $query = 'SELECT * FROM informs';
 $result2 = mysqli_query($db, $query);
 if (!$result2) {
-    echo 'not result' . ' ' . mysqli_errno($db) . ' ' . mysqli_error($db);
+    $mes_error.= 'not result' . ' ' . mysqli_errno($db) . ' ' . mysqli_error($db);
 } else {
     $count = 1;
     while ($row = mysqli_fetch_assoc($result2)) {
@@ -23,23 +23,27 @@ if (!$result2) {
 }
 //принимаем значения с POST
 if ($_GET) {
+    foreach($_GET['users'] as $user){
+        var_dump($user) ;
+    }
     $users = filter_input(INPUT_GET, 'users');
+    //var_dump($users) ;
     $title = filter_input(INPUT_GET, 'title');
     $text = filter_input(INPUT_GET, 'text');
     //записываем сообщение
     $query = "INSERT INTO informs VALUES ($count,'$title','$text')";
     $result3 = mysqli_query($db, $query);
     if (!$result3) {
-        echo 'not result' . ' ' . mysqli_errno($db) . ' ' . mysqli_error($db);
+        $mes_error.= 'not result' . ' ' . mysqli_errno($db) . ' ' . mysqli_error($db);
     } else {
-        echo 'сообщение добавлено<br>';
+        $mes.= 'сообщение добавлено<br>';
     }
 
     //получаем user_id
     $query = "SELECT id FROM users WHERE name='$users'";
     $result4 = mysqli_query($db, $query);
     if (!$result4) {
-        echo 'not result' . ' ' . mysqli_errno($db) . ' ' . mysqli_error($db);
+        $mes_error.= 'not result' . ' ' . mysqli_errno($db) . ' ' . mysqli_error($db);
     } else {
         $result4 = mysqli_fetch_assoc($result4);
         $user_id = $result4['id'];
@@ -49,9 +53,9 @@ if ($_GET) {
     $query = "INSERT INTO informs_users VALUES (NULL,'$count','$user_id')";
     $result4 = mysqli_query($db, $query);
     if (!$result4) {
-        echo 'not result' . ' ' . mysqli_errno($db) . ' ' . mysqli_error($db);
+        $mes_error.= 'not result' . ' ' . mysqli_errno($db) . ' ' . mysqli_error($db);
     } else {
-        echo 'сообщение связано с юзером<br>';
+        $mes.=  'сообщение связано с юзером<br>';
     }
 }
 ?>
@@ -65,11 +69,11 @@ if ($_GET) {
     <body>
         <div id="reg">
             <h3>Форма отправки сообщения</h3>
-            <p class="err"><?= $mes_er ?></p>
+            <p class="err"><?= $mes_error ?></p>
             <p class="norm"><?= $mes ?></p>
             <form action="#" method="GET" name="message">
                 <label>Выберите пользователей:
-                    <select size="2" multiple name="users">
+                    <select size="2" multiple name="users[]">
                         <?php echo $res; ?>
                     </select>
                 </label>
@@ -84,7 +88,6 @@ if ($_GET) {
                 <br/><br/>
                 <input type="submit" value="Отправить сообщение">
             </form>
-            <div class="signup"><?= $sign ?></div>
         </div>
 
     </body>
