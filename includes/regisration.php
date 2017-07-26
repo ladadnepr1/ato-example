@@ -1,10 +1,10 @@
 <?php
 
-include_once 'config.php';
-//const DB_USER = 'root';
-//const DB_PASS = '';
-//const DB_NAME = 'inform_ato_web';
-//const DB_HOST = 'localhost';
+//include_once 'config.php';
+const DB_USER = 'root';
+const DB_PASS = '';
+const DB_NAME = 'inform_ato_web';
+const DB_HOST = 'localhost';
 $dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
 //принимаем значения с POST
@@ -16,7 +16,7 @@ if (isset($_POST['reg'])) {
     $name = mysqli_real_escape_string($dbc, trim($_POST['login']));
     $email = mysqli_real_escape_string($dbc, trim($_POST['email']));
     $pass1 = mysqli_real_escape_string($dbc, trim($_POST['pass1']));
-    $pass = password_hash($pass1, PASSWORD_DEFAULT);
+    $pass = password_hash($pass1, PASSWORD_BCRYPT, array('cost'=>12));
     $pass2 = mysqli_real_escape_string($dbc, trim($_POST['pass2']));
 
     if ($name == '') {
