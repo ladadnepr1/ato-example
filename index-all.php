@@ -1,16 +1,14 @@
 <?php
-const DB_USER = 'root';
-const DB_PASS = '';
-const DB_NAME = 'inform_ato_web';
-const DB_HOST = 'localhost';
+//const DB_USER = 'root';
+//const DB_PASS = '';
+//const DB_NAME = 'inform_ato_web';
+//const DB_HOST = 'localhost';
 
-//include_once 'config.php';
+include_once 'config.php';
 $dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 session_start();
 $login = $_SESSION['username'];
-//$query = "SELECT * FROM `users` WHERE name = '$login'";
-//$result = mysqli_query($db, $query);
-//$row = mysqli_fetch_assoc($result);
+
 ?>
 <!DOCTYPE html>
 <html lang="ru">
