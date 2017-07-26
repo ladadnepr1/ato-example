@@ -9,7 +9,6 @@ $query = 'SELECT * FROM users';
         while ($row = mysqli_fetch_assoc($result)) {
             $res .= '<option>' . $row ['name'] . '</option>';
         }
-        //echo $res;
     }
 //получаем количество сообщений
 $query = 'SELECT * FROM informs';
@@ -21,7 +20,6 @@ $query = 'SELECT * FROM informs';
         while ($row = mysqli_fetch_assoc($result2)) {
             $count++;
         }
-        //echo $count;
     }
 //принимаем значения с POST
 if ($_GET) {
