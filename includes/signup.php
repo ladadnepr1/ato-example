@@ -34,6 +34,8 @@ if (isset($_POST['sign_up'])) {
             $_SESSION['logged_user'] = $row['name'];
             $mes_er = 'Вы авторизованы!';
             mysqli_close($dbc);
+            header('Location:http://ato-example/index-all.php');
+  exit;
         } else {
             $mes_er = 'Неверно введен пароль';
         }
@@ -52,13 +54,13 @@ if (isset($_POST['sign_up'])) {
     </head>
     <body>
         <div id="signup">
-            <h3>Форма регистрации</h3>
+            <h3>Авторизируйтесь</h3>
             <p class="err"><?= $mes_er ?></p>
             <p class="norm"><?= $mes ?></p>
             <form method="POST">
                 <input type="text" name="login" placeholder="Логин">
                 <input type="password" name="password" placeholder="Пароль">
-                <input type="submit" name="sign_up" value="АВТОРИЗАЦИЯ">
+                <input type="submit" name="sign_up" value="ВХОД">
             </form>
             <div class="signup"><?= $sign ?></div>
         </div>

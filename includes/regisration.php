@@ -74,7 +74,7 @@ if (isset($_POST['reg'])) {
     </head>
     <body>
         <div id="reg">
-            <h3>Форма регистрации</h3>
+            <h3>РЕГИСТРАЦИЯ</h3>
             <p class="err"><?= $mes_er ?></p>
             <p class="norm"><?= $mes ?></p>
             <form method="POST">
