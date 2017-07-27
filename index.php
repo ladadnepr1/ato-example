@@ -1,29 +1,25 @@
 <?php
 include_once $_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'includes'.DIRECTORY_SEPARATOR.'config.php';
 //сборка всех частей
+//если есть логин в $_SESSION['username'] , определить польз или админ стр 14 Валерий
  if (isset($_SESSION['username'])) {
-     if(is_admin( $username)){
+     if(is_admin( $db,$username)){
+	 //если админ , переход на страницу show_admin.php стр 4 Андрей
 	 $thisway='show_admin.php';
      }else{
+	 //если польз , переход на страницу show.php стр 9 Лада
 	 $thisway='show.php';
      }
-}else{
+}else if (!$thisway=filter_input(INPUT_GET, 'thisway')){
+    //если нет логина, переход на страницу show_reg_aut.php стр 3 Алексей и стр 13 Ярослав
      $thisway='show_reg_aut.php';
-    exit;
 }
-//если есть логин в $_SESSION['username'] , определить польз или админ стр 14 Валерий
-
-     //если польз , переход на страницу show.php стр 9 Лада
+//$thisway='show_autor.php';
      
-     //если админ , переход на страницу show_admin.php стр 4 Андрей
 
-//если нет логина, переход на страницу show_reg_aut.php стр 3 Алексей и стр 13 Ярослав
 
 //
 
-if(!$thisway=filter_input(INPUT_GET, 'thisway')){
-    $thisway='show_reg_aut.php';
-}
 //var_dump($thisway);
 //$thisway='reg_index.php' ;
 ?>
