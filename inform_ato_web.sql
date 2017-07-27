@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Июл 26 2017 г., 09:56
+-- Время создания: Июл 27 2017 г., 10:23
 -- Версия сервера: 5.5.53
 -- Версия PHP: 5.5.38
 
@@ -55,7 +55,7 @@ CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `pass` varchar(50) NOT NULL,
+  `pass` varchar(255) NOT NULL,
   `admin_is` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
