@@ -16,7 +16,7 @@ include_once 'config.php';
     </head>
     <body>
         <header>
-            <h1>Сообщения пользователя</h1>
+            <h1>Сообщения пользователя: непрочитанных *****</h1>
         </header>
         <main>
              <?php include_once 'show_text.php'; ?>
