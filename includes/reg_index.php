@@ -56,7 +56,7 @@ if (isset($_POST['reg'])) {
     if (empty($errors)) {
         $query = "INSERT INTO `users` (name,email, pass) VALUES ('$name','$email', '$pass')";
         mysqli_query($dbc, $query);
-        $sign = "<a href='signup.php'>>>>АВТОРИЗАЦИЯ<<<</a>";
+        $sign = "<a href='index.php?thisway=show_autor.php'>>>>АВТОРИЗАЦИЯ<<<</a>";
         $mes = 'Регистрация Прошла успешно!';
         $log = '';
         $em = '';
