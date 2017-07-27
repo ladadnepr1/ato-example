@@ -36,6 +36,7 @@ if ($_GET) {
 
         //получаем user_id
         $query = "SELECT id FROM users WHERE name='$user'";
+	echo $user;
         $result4 = mysqli_query($db, $query);
         if (!$result4) {
             $mes_error .= 'not result' . ' ' . mysqli_errno($db) . ' ' . mysqli_error($db);
