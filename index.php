@@ -16,13 +16,8 @@ $username=$_SESSION['username'];
      $thisway='show_reg_aut.php';
 }
 //$thisway='show_autor.php';
-     
-
-
-//
-
-//var_dump($thisway);
-//$thisway='reg_index.php' ;
+ //$thisway='reg_index.php' ;    
+//$thisway='show.php';
 ?>
 
 <!DOCTYPE html>
