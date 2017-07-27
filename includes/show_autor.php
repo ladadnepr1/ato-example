@@ -45,6 +45,10 @@ if (isset($_POST['sign_up'])) {
     }
 }
 ?>
+<header>
+
+    <h1>АВТОРИЗАЦИЯ</h1>
+</header>
        <div id="signup">
             <h3>Авторизируйтесь</h3>
             <p class="err"><?= $mes_er ?></p>
