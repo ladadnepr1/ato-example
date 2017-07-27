@@ -29,7 +29,7 @@ include_once 'config.php';
         </div>
         <div class="text">
             <p>Единственная настоящая роскошь — это роскошь человеческого общения.</p>
-            <a href="http://xn--e1afnj0c.xn--p1ai/author/Antoine_de_Saint-Exupery/">Антуан де Сент-Экзюпери</a>
+            <a href="http://xn--e1afnj0c.xn--p1ai/author/Antoine_de_Saint-Exupery/" target="_blank">Антуан де Сент-Экзюпери</a>
         </div>
     </content>
 </main>
