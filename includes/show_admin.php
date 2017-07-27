@@ -38,6 +38,7 @@ if ($_GET) {
 
         //получаем user_id
         $query = "SELECT id FROM users WHERE name='$user'";
+	//echo $user;
         $result4 = mysqli_query($db, $query);
         if (!$result4) {
             $mes_error .= 'not result' . ' ' . mysqli_errno($db) . ' ' . mysqli_error($db);
@@ -45,9 +46,9 @@ if ($_GET) {
             $result4 = mysqli_fetch_assoc($result4);
             $user_id = $result4['id'];
         }
-
+	echo $count;
         //записываем в informs_users    
-        $query = "INSERT INTO informs_users VALUES (NULL,'$count','$user_id')";
+        $query = "INSERT INTO informs_users VALUES (NULL,'$count','$user_id', NULL)";
         $result4 = mysqli_query($db, $query);
         if (!$result4) {
             $mes_error .= 'not result' . ' ' . mysqli_errno($db) . ' ' . mysqli_error($db);
