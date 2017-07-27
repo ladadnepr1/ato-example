@@ -10,7 +10,12 @@ include_once $_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'includes'.DIRECTORY_
 //если нет логина, переход на страницу show_reg_aut.php стр 3 Алексей и стр 13 Ярослав
 
 //
-$thisway='show_admin.php';
+
+if(!$thisway=filter_input(INPUT_GET, 'thisway')){
+    $thisway='show_reg_aut.php';
+}
+//var_dump($thisway);
+//$thisway='reg_index.php' ;
 ?>
 
 <!DOCTYPE html>
@@ -18,6 +23,7 @@ $thisway='show_admin.php';
     <head>
         <meta charset="UTF-8">
         <link href="style/style.css" rel="stylesheet" type="text/css"/>
+        <link href="../style/style.css" rel="stylesheet" type="text/css"/>
         <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
         <title>Сообщения</title>
     </head>
