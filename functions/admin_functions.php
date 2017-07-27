@@ -1,11 +1,9 @@
 <?php
 
 
-const DB_USER = 'root';
-const DB_PASS = '';
+
 // вставить имя базы данных
-const DB_NAME = 'inform_ato_web';
-const DB_HOST = 'localhost';
+
 
 /**
  * Функция проверяет является ли пользователь админом
@@ -14,12 +12,12 @@ const DB_HOST = 'localhost';
  * @return string
  * админ или юзер
  */
-function is_admin( int $userid){
-    $query="SELECT  `admin_is` FROM `users` WHERE id=$userid";
+function is_admin( $username){
+    $query="SELECT  `admin_is` FROM `users` WHERE name=$username";
     if(mysqli_query($db, $query)){
-        return 'admin';
+        return true;
     } else {
-        return 'user';
+        return false;
     }       
 }
 
