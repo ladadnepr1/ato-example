@@ -33,7 +33,7 @@ if (isset($_POST['sign_up'])) {
 
         if (password_verify($password, $hash)) {
             $_SESSION['username'] = $row['name'];
-            echo 'Вы авторизованы!<br> <a href="../index.php">ПЕРЕЙТИ</a>';
+            echo '<script>location.replace("../index.php");</script>'; exit;
             mysqli_close($dbc);
            
             exit;
