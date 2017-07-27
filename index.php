@@ -2,8 +2,11 @@
 include_once $_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'includes'.DIRECTORY_SEPARATOR.'config.php';
 //сборка всех частей
  if (isset($_SESSION['username'])) {
-    header('Location:http://ato-example/index.php');
-    exit;
+     if(is_admin( $username)){
+	 $thisway='show_admin.php';
+     }else{
+	 $thisway='show.php';
+     }
 }else{
      $thisway='show_reg_aut.php';
     exit;
