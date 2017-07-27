@@ -10,6 +10,6 @@ $dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
 unset($_SESSION['username']);
 //header("Location:$path_includes.'index.php'");
-echo 'Вы вышли!<br> <a href="../index.php">ПЕРЕЙТИ НА ГЛАВНУЮ</a>';
-
+//echo 'Вы вышли!<br> <a href="../index.php">ПЕРЕЙТИ НА ГЛАВНУЮ</a>';
+echo '<script>location.replace("../index.php");</script>'; exit;
 
