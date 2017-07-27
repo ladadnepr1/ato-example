@@ -10,7 +10,7 @@ include_once $_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'includes'.DIRECTORY_
 //если нет логина, переход на страницу show_reg_aut.php стр 3 Алексей и стр 13 Ярослав
 
 //
-$thisway='show_reg_aut.php';
+$thisway='show_admin.php';
 ?>
 
 <!DOCTYPE html>
