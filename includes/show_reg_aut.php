@@ -14,7 +14,7 @@ include_once 'config.php';
                     <a href="includes/reg.php">АВТОРИЗАЦИЯ</a>
                 </li>
                 <li>
-                    <a href="includes/regisration.php">РЕГИСТРАЦИЯ</a>
+                    <a href="index.php?thisway=reg_index.php">РЕГИСТРАЦИЯ</a>
                 </li>
             </ul>
         </div>
