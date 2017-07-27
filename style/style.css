@@ -27,7 +27,7 @@ body{
     display: block;
     margin: auto;
     height: 30px;
-    width: 300px;
+    width: 55%;
     margin-bottom: 10px;
     padding: 0px 5px;
 }
@@ -46,7 +46,8 @@ body{
     border: 1px solid #1da1f2;
     color: #fff;
     height: 50px;
-    width: 300px;
+    width: 50%;
+    min-width: 140px;
 }
 #reg input[type='submit']:hover{
     background-color: #006dbf;
@@ -77,7 +78,7 @@ body{
     border: 1px solid #79bc64;
     color: #fff;
     height: 50px;
-    width: 300px;
+    width: 50%;
     text-decoration: none;
 }
 #reg .signup a:hover{
@@ -156,9 +157,11 @@ main{
 }
 #lsb .read li a{
     color:#a7b3cb;
+
 }
 #lsb .not_read li a{
     color:#fff;
+
 }
 #lsb .read li:first-child{
     padding-top: 10px;
@@ -172,6 +175,10 @@ content{
     margin: auto;
     font-size: 18px;
     height: 100vh;
+}
+.username h3{
+    padding: 20px;
+    font-size: 24px;
 }
 .title p{
     padding: 20px;
@@ -202,7 +209,7 @@ content{
     display: block;
     margin: auto;
     height: 30px;
-    width: 300px;
+    width: 50%;
     margin-bottom: 10px;
     padding: 0px 5px;
 }
@@ -222,7 +229,7 @@ content{
     border: 1px solid #79bc64;
     color: #fff;
     height: 50px;
-    width: 300px;
+    width: 40%;
     text-decoration: none;
 }
 #signup input[type='submit']:hover{
@@ -254,7 +261,7 @@ content{
     border: 1px solid #79bc64;
     color: #fff;
     height: 50px;
-    width: 300px;
+    width: 200px;
     text-decoration: none;
 }
 #signup .signup a:hover{
