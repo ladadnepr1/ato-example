@@ -75,7 +75,7 @@ function is_admin($db,$username) {
 }
 
 /**
- * функция проверяет при помощи функции is_admin() права, и если 'user' - то изменяет их на 'admin', а если  'admin' - меняет на 'user'.При этом выводит сообщение об успехе или ошибке. 
+ * функция проверяет при помощи функции is_admin() права, и если 'user' - то изменяет их на 'admin'
  * 
  * @param int $iduser
  *  id пользователя
@@ -87,7 +87,7 @@ function rights( $iduser) {
     } else {
         //echo 'подлючение успешно';
         if (is_admin($iduser) == 'user') {
-            $query = "UPDATE `users` SET `admin_is` = '1' WHERE `id` = $iduser";
+            $query = "UPDATE `users` SET `admin_is` = '1' WHERE `name` = '$iduser'";
             $result = mysqli_query($db, $query);
             if (!$result) {
                 echo 'результат не был получен: ' . mysqli_error($db) . ' ' . mysqli_errno($db);
