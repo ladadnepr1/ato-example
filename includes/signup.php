@@ -33,9 +33,9 @@ if (isset($_POST['sign_up'])) {
 
         if (password_verify($password, $hash)) {
             $_SESSION['username'] = $row['name'];
-            $mes_er = 'Вы авторизованы!';
+            //$mes_er = 'Вы авторизованы!';
             mysqli_close($dbc);
-            header('Location:http://ato-example/index-all.php');
+            header('Location:../index.php');
             exit;
         } else {
             $mes_er = 'Неверно введен пароль';

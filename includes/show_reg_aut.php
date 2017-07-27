@@ -11,7 +11,7 @@ include_once 'config.php';
         <div class="not_read">
             <ul>
                 <li>
-                    <a href="includes/reg.php">АВТОРИЗАЦИЯ</a>
+                    <a href="index.php?thisway=show_autor.php">АВТОРИЗАЦИЯ</a>
                 </li>
                 <li>
                     <a href="index.php?thisway=reg_index.php">РЕГИСТРАЦИЯ</a>
