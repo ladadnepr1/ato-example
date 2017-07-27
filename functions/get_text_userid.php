@@ -28,3 +28,29 @@ function get_inform($db, $username, $inform_id) {
     $query_informs_users_id = "SELECT informs.inform,informs.name FROM informs WHERE informs.id='" . $inform_id . "'";
     return mysqli_query($db, $query_informs_users_id);
 }
+//код Валерия+
+//функция проверяет есть ли username в $_SESSION['username'].
+//Возвращает имя или false
+function username_SESSION ($username)
+{
+	$username = Fix($_POST['username']);//имя пользователя
+        if (isset($_SESSION['USERNAME'])) 
+		{
+            $username=$_SESSION['USERNAME'];//устанавливает, совпадает ли имя пользователя с сессионным 
+			echo "Добропожаловаль .$username";// die ("<p><a href='continue.php'>Щелкните здесь для продолжения</a></p>");
+        }else//return FALSE;
+		{
+			echo "Пожалуйста, для входа <a href='authenticate.php'> щелкните здесь</a>";
+		}
+	session_write_close(); //закрытие сессии
+}
+	 
+function Fix($str) //очистка полей
+{ 
+	$str = trim($str);
+	if(get_magic_quotes_gpc()) 
+	{
+		$str = stripslashes($str);//Удаляет экранирование символов, произведенное функцией addslashes()
+	}
+	return mysql_real_escape_string($str);
+}
