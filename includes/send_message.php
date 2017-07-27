@@ -4,58 +4,55 @@ include_once 'config.php';
 $query = 'SELECT * FROM users';
 $result = mysqli_query($db, $query);
 if (!$result) {
-    $mes_error.= 'not result' . ' ' . mysqli_errno($db) . ' ' . mysqli_error($db);
+    $mes_error .= 'not result' . ' ' . mysqli_errno($db) . ' ' . mysqli_error($db);
 } else {
     while ($row = mysqli_fetch_assoc($result)) {
         $res .= '<option>' . $row ['name'] . '</option>';
     }
 }
-//получаем количество сообщений
-$query = 'SELECT * FROM informs';
+//получаем id последнего сообщения
+$query = 'SELECT id FROM informs ORDER BY id DESC LIMIT 1';
 $result2 = mysqli_query($db, $query);
 if (!$result2) {
-    $mes_error.= 'not result' . ' ' . mysqli_errno($db) . ' ' . mysqli_error($db);
+    $mes_error .= 'not result' . ' ' . mysqli_errno($db) . ' ' . mysqli_error($db);
 } else {
-    $count = 1;
-    while ($row = mysqli_fetch_assoc($result2)) {
-        $count++;
-    }
+    $result2=mysqli_fetch_assoc($result2);
+    $count= $result2['id'];
 }
 //принимаем значения с POST
 if ($_GET) {
-    foreach($_GET['users'] as $user){
-        var_dump($user) ;
-    }
-    $users = filter_input(INPUT_GET, 'users');
-    //var_dump($users) ;
     $title = filter_input(INPUT_GET, 'title');
     $text = filter_input(INPUT_GET, 'text');
-    //записываем сообщение
-    $query = "INSERT INTO informs VALUES ($count,'$title','$text')";
-    $result3 = mysqli_query($db, $query);
-    if (!$result3) {
-        $mes_error.= 'not result' . ' ' . mysqli_errno($db) . ' ' . mysqli_error($db);
-    } else {
-        $mes.= 'сообщение добавлено<br>';
-    }
+    foreach ($_GET['users'] as $user) {
+        $count++;
+        //записываем сообщение
+        $query = "INSERT INTO informs VALUES ($count,'$title','$text')";
+        $result3 = mysqli_query($db, $query);
+        if (!$result3) {
+            $mes_error .= 'not result' . ' ' . mysqli_errno($db) . ' ' . mysqli_error($db);
+        } else {
+            $mes .= 'сообщение добавлено<br>';
+        }
 
-    //получаем user_id
-    $query = "SELECT id FROM users WHERE name='$users'";
-    $result4 = mysqli_query($db, $query);
-    if (!$result4) {
-        $mes_error.= 'not result' . ' ' . mysqli_errno($db) . ' ' . mysqli_error($db);
-    } else {
-        $result4 = mysqli_fetch_assoc($result4);
-        $user_id = $result4['id'];
-    }
+        //получаем user_id
+        $query = "SELECT id FROM users WHERE name='$user'";
+        $result4 = mysqli_query($db, $query);
+        if (!$result4) {
+            $mes_error .= 'not result' . ' ' . mysqli_errno($db) . ' ' . mysqli_error($db);
+        } else {
+            $result4 = mysqli_fetch_assoc($result4);
+            $user_id = $result4['id'];
+        }
 
-    //записываем в informs_users    
-    $query = "INSERT INTO informs_users VALUES (NULL,'$count','$user_id')";
-    $result4 = mysqli_query($db, $query);
-    if (!$result4) {
-        $mes_error.= 'not result' . ' ' . mysqli_errno($db) . ' ' . mysqli_error($db);
-    } else {
-        $mes.=  'сообщение связано с юзером<br>';
+        //записываем в informs_users    
+        $query = "INSERT INTO informs_users VALUES (NULL,'$count','$user_id')";
+        $result4 = mysqli_query($db, $query);
+        if (!$result4) {
+            $mes_error .= 'not result' . ' ' . mysqli_errno($db) . ' ' . mysqli_error($db);
+        } else {
+            $mes .= 'сообщение связано с юзером<br>';
+        }
+        
     }
 }
 ?>
