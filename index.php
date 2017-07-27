@@ -2,8 +2,9 @@
 include_once $_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'includes'.DIRECTORY_SEPARATOR.'config.php';
 //сборка всех частей
 //если есть логин в $_SESSION['username'] , определить польз или админ стр 14 Валерий
+$username=$_SESSION['username'];
  if (isset($_SESSION['username'])) {
-     if(is_admin( $db,$username)){
+     if(is_admin($db,$username)){
 	 //если админ , переход на страницу show_admin.php стр 4 Андрей
 	 $thisway='show_admin.php';
      }else{
