@@ -10,7 +10,7 @@ if (!$result): echo 'problem1:' . mysqli_errno($db) . ' ' . mysqli_error($db); ?
                 <?php while ($row = mysqli_fetch_assoc($result)): ?>
                     <?php if (is_null($row['readinform'])) : ?>
                     <li >
-                        <a href="show.php?inform_id=<?= $row['inform_id'] ; ?>"><?= $row['name'] ; ?></a>
+                        <a href="index.php?inform_id=<?= $row['inform_id'] ; ?>"> <?= $row['name'] ; ?></a>
                     </li>
                     
                     <?php endif; ?>
@@ -26,7 +26,7 @@ if (!$result): echo 'problem1:' . mysqli_errno($db) . ' ' . mysqli_error($db); ?
                 
                     <?php if (!is_null($row['readinform'])) : ?>
                     <li >
-                        <a href="show.php?inform_id=<?= $row['inform_id'] ; ?>"><?= $row['name'] ; ?></a>
+                        <a href="index.php?inform_id=<?= $row['inform_id'] ; ?>"><?= $row['name'] ; ?></a>
                     </li>
                     <?php endif; ?>
                 <?php endwhile; ?>               
