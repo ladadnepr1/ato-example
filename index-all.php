@@ -4,7 +4,7 @@
 //const DB_NAME = 'inform_ato_web';
 //const DB_HOST = 'localhost';
 
-include_once 'config.php';
+include_once './includes/config.php';
 $dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 session_start();
 $login = $_SESSION['username'];
