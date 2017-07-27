@@ -2,7 +2,6 @@
 //страница отображения сообщений пользователю - не админу
 include_once 'config.php';
 //изменить пользователя!!!!!!
-$_SESSION['username']='lada';
 $username=$_SESSION['username'];
 
 ?>
@@ -10,7 +9,7 @@ $username=$_SESSION['username'];
 <header>
 
     <h1>Сообщения для <span><?= $username; ?></span>: непрочитанных *****</h1>
-    <a href="http://ato-example/includes/logout.php">ВЫЙТИ</a>
+    <a href="../includes/logout.php">ВЫЙТИ</a>
 
 </header>
 <main>
