@@ -1,6 +1,13 @@
 <?php
 include_once $_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'includes'.DIRECTORY_SEPARATOR.'config.php';
 //сборка всех частей
+ if (isset($_SESSION['username'])) {
+    header('Location:http://ato-example/index.php');
+    exit;
+}else{
+     $thisway='show_reg_aut.php';
+    exit;
+}
 //если есть логин в $_SESSION['username'] , определить польз или админ стр 14 Валерий
 
      //если польз , переход на страницу show.php стр 9 Лада
