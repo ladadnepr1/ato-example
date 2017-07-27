@@ -38,11 +38,10 @@ function username_SESSION ($username)
 		{
             $username=$_SESSION['USERNAME'];//устанавливает, совпадает ли имя пользователя с сессионным 
 			echo "Добропожаловаль .$username";// die ("<p><a href='continue.php'>Щелкните здесь для продолжения</a></p>");
-        }else
+        }else//return FALSE;
 		{
 			echo "Пожалуйста, для входа <a href='authenticate.php'> щелкните здесь</a>";
 		}
-    return FALSE;
 	session_write_close(); //закрытие сессии
 }
 
