@@ -1,5 +1,15 @@
+<?php
+//const DB_USER = 'root';
+//const DB_PASS = '';
+//const DB_NAME = 'inform_ato_web';
+//const DB_HOST = 'localhost';
 
+include_once 'config.php';
+$dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+session_start();
+$login = $_SESSION['username'];
 
+?>
 <!DOCTYPE html>
 <html lang="ru">
     <head>
@@ -10,7 +20,8 @@
     </head>
     <body>
         <header>
-            <h1>Сообщения пользователя</h1>
+            <h1>Сообщения для <span><?= $login; ?></span></h1>
+            <a href="http://ato-example/includes/logout.php">ВЫЙТИ</a>
         </header>
         <main>
             <div id="lsb">
@@ -42,9 +53,6 @@
                 </div>
             </div>
             <content>
-                <div class="username">
-                    <h3>user</h3>
-                </div>
                 <div class="title">
                     <p>title сообщения</p>
                 </div>
