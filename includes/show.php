@@ -4,7 +4,7 @@ include_once 'config.php';
 //изменить пользователя!!!!!!
 //$username=$_SESSION['username'];
  $username='lada';
- 
+
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -16,7 +16,10 @@ include_once 'config.php';
     </head>
     <body>
         <header>
-            <h1>Сообщения пользователя: непрочитанных *****</h1>
+
+            <h1>Сообщения для <span><?= $username; ?></span>: непрочитанных *****</h1>
+            <a href="http://ato-example/includes/logout.php">ВЫЙТИ</a>
+ 
         </header>
         <main>
              <?php include_once 'show_text.php'; ?>
