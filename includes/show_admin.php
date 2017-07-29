@@ -75,7 +75,7 @@ $result_right = mysqli_query($db, $query_right);
 
 </header>
 <main>
-    <div id="lsb">
+    <div id="lsb" class='margin'>
         <table >
             <caption><h3>Добавить администратора</h3></caption>
 <?php while ($row = mysqli_fetch_assoc($result_right)): ?>
