@@ -17,7 +17,7 @@ if (is_null($inform_id)) {
 ?>
 <content>
     <div class="username">
-        <h3> непрочитанных <?= unread_messages($db,$username);?> </h3>
+        <h3> непрочитанных сообщений : <?= unread_messages($db,$username);?> </h3>
     </div>
     <div class="title">
         <p><?= $inform_name ?></p>

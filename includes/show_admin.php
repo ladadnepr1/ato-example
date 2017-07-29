@@ -76,8 +76,8 @@ $result_right = mysqli_query($db, $query_right);
 </header>
 <main>
     <div id="lsb">
-        <table>
-            <caption>Добавить админа</caption>
+        <table >
+            <caption><h3>Добавить администратора</h3></caption>
 <?php while ($row = mysqli_fetch_assoc($result_right)): ?>
                 <tr>                    
                 <?php if(!$row['admin_is']): ?>
@@ -85,10 +85,10 @@ $result_right = mysqli_query($db, $query_right);
                         <td>
                             <form method="POST">
                                 <input type="hidden" name="name" value="<?= $row['name'] ?>"/>
-                                <input type="submit" value="добавить" name="submit_form"/>
+                                <input class='admin' type="submit" value="добавить" name="submit_form"/>
                             </form>
                         </td>
-                  <?php                        endif;?>  
+                  <?php   endif;?>  
                 </tr>                
                 <?php endwhile; ?>
         </table>
@@ -98,22 +98,22 @@ $result_right = mysqli_query($db, $query_right);
         <h3>Форма отправки сообщения</h3>
         <p class="err"><?= $mes_error ?></p>
         <p class="norm"><?= $mes ?></p>
-        <form action="#" method="GET" name="message">
-            <label>Выберите пользователей:
-                <select size="2" multiple name="users[]">
+        <form action="#" method="GET" name="message" >
+            <label><p>Выберите пользователей:</p>
+                <select class='select' size="2" multiple name="users[]">
 <?php echo $res; ?>
                 </select>
             </label>
-            <br/><br/>
+            <br/>
             <label>Заголовок сообщения:
                 <input type="text" name="title"/>
             </label>
-            <br/><br/>
+            <br/>
             <label>Текст сообщения:
                 <textarea rows="10" cols="45" name="text"></textarea>
             </label>
             <br/><br/>
-            <input type="submit" value="Отправить сообщение">
+            <input type="submit" value="Отправить">
         </form>
     </div>
 

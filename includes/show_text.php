@@ -1,7 +1,7 @@
 <?php 
 //<div id="lsb">
 $result = show_text_username($db, $username);
-if (!$result): echo 'problem1:' . mysqli_errno($db) . ' ' . mysqli_error($db); ?>
+if (!$result): echo 'Ошибка: ' . mysqli_errno($db) . ' ' . mysqli_error($db); ?>
 
 <?php else : ?>
  <div id="lsb">
@@ -20,7 +20,7 @@ if (!$result): echo 'problem1:' . mysqli_errno($db) . ' ' . mysqli_error($db); ?
         </div>
         <div class="read">
             
-            <ul>
+            <ul >
                 <?php $result = show_text_username($db, $username); ?>
                  <?php while ($row = mysqli_fetch_assoc($result)): ?>
                 
