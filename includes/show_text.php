@@ -1,7 +1,7 @@
 <?php 
 //<div id="lsb">
 $result = show_text_username($db, $username);
-if (!$result): echo 'Ошибка: ' . mysqli_errno($db) . ' ' . mysqli_error($db); ?>
+if (!$result): echo 'Ошибка1: ' . mysqli_errno($db) . ' ' . mysqli_error($db); ?>
 
 <?php else : ?>
  <div id="lsb">

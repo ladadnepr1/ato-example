@@ -12,7 +12,7 @@ if (is_null($inform_id)) {
     $inform_name = $row['name'];
     $mes = $row['inform'];
 } else {
-    $mes = 'problem2:' . mysqli_errno($db) . ' ' . mysqli_error($db);
+    $mes = 'Ошибка2:' . mysqli_errno($db) . ' ' . mysqli_error($db);
 }
 ?>
 <content>
