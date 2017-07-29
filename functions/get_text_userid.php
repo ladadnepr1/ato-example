@@ -80,13 +80,11 @@ function is_admin($db,$username) {
  * @param int $iduser
  *  id пользователя
  */
-function rights( $iduser) {
-    $db = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
-    if (!$db) {
-        echo 'трабл при подключении к СУБД: ' . mysqli_connect_error() . ' ' . mysqli_connect_errno();
-    } else {
+function rights($db, $iduser) {
+    
+    
         //echo 'подлючение успешно';
-        if (is_admin($iduser) == 'user') {
+        if (!is_admin($db,$iduser)) {
             $query = "UPDATE `users` SET `admin_is` = '1' WHERE `name` = '$iduser'";
             $result = mysqli_query($db, $query);
             if (!$result) {
@@ -95,7 +93,7 @@ function rights( $iduser) {
                 echo 'права пользователя изменены на админские';
             }
         }
-    }
+    
 }
 
 //====================================
