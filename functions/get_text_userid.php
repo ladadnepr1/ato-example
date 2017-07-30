@@ -1,6 +1,6 @@
 <?php
 //функция принимает базу данных и номер пользователя
-// возвращает выборку заголовки и текст сообщений для пользователя id
+// возвращает выборку заголовки и текст сообщений для пользователя $username
 function show_text_username($db, $username,$page) {
     $offset=$page*10;
     $query = 'SELECT informs.name,informs.inform,informs_users.readinform,informs_users.inform_id FROM informs INNER JOIN informs_users ON informs.id=informs_users.inform_id INNER JOIN users ON users.id=informs_users.user_id WHERE users.name="' . $username . '" limit '.$offset.',10';
@@ -51,53 +51,10 @@ function Fix($str) { //очистка полей
     }
     return mysql_real_escape_string($str);
 }
-
-
-//========================================================
-/**
- * Функция проверяет является ли пользователь админом
- * @param int $userid
- * id пользователя
- * @return string
- * админ или юзер
- */
-function is_admin($db,$username) {
-    $query = "SELECT  `admin_is` FROM `users` WHERE name='$username'";
-    $result=mysqli_query($db, $query);
-    if($result){
-	$row= mysqli_fetch_assoc($result);
-	$is_admin=$row['admin_is'];
-	if($is_admin){
-	    return true;	    
-	}
-    } 
-    return false;
-    
+// количесво сообщений для юзера
+function count_informs($db, $username){
+    $query='SELECT count(informs_users.inform_id) as count FROM informs_users INNER JOIN users ON users.id=informs_users.user_id WHERE users.name="' . $username . '"';
+    $res=mysqli_query($db, $query);
+    $row=mysqli_fetch_assoc($res);
+    return $row['count'];
 }
-
-/**
- * функция проверяет при помощи функции is_admin() права, и если 'user' - то изменяет их на 'admin'
- * 
- * @param int $iduser
- *  id пользователя
- */
-function rights($db, $iduser) {
-    
-    
-        //echo 'подлючение успешно';
-        if (!is_admin($db,$iduser)) {
-            $query = "UPDATE `users` SET `admin_is` = '1' WHERE `name` = '$iduser'";
-            $result = mysqli_query($db, $query);
-            if (!$result) {
-                echo 'результат не был получен: ' . mysqli_error($db) . ' ' . mysqli_errno($db);
-            } else {
-                echo 'права пользователя изменены на админские';
-            }
-        }
-    
-}
-
-//====================================
-
-
-
