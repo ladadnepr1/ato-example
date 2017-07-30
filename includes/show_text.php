@@ -5,8 +5,8 @@ $count_mes = count_informs($db, $username);
 $page = filter_input(INPUT_GET, 'page');
 if (is_null($page) || $page < 0) {
     $page = 0;
-    $end = 10;
-} else if (($page * 10 + 11) > $count_mes) {
+} 
+if (($page * 10 + 11) > $count_mes) {
     $end = $count_mes;
 } else {
     $end = $page * 10 + 10;
