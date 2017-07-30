@@ -139,7 +139,7 @@ main{
     list-style-type: none;
 }
 #lsb li:first-child{
-    padding-top: 80px;
+    padding-top: 10px;
 }
 #lsb li{
     text-decoration: none;

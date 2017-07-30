@@ -19,6 +19,7 @@ if (!$result): echo 'Ошибка1: ' . mysqli_errno($db) . ' ' . mysqli_error($
 
     <?php else : ?>
     <div id="lsb">
+        <!--выбор сообщений 1-10 11-20 ... -->
         <?php if ($page > 0) : ?>
             <a href="index.php?page=<?= $page - 1; ?>"> <<<</a>
         <?php endif; ?> 
@@ -26,6 +27,7 @@ if (!$result): echo 'Ошибка1: ' . mysqli_errno($db) . ' ' . mysqli_error($
         <?php if ($end !== $count_mes) : ?>
             <a href="index.php?page=<?= $page + 1; ?>"> >>></a>
     <?php endif; ?>
+            <!-- заголовки непрочитанных сообщений-->
         <div class="not_read">
             <h3>непрочитанные:</h3>
                 <?php $count = 0 ?>
@@ -35,7 +37,7 @@ if (!$result): echo 'Ошибка1: ' . mysqli_errno($db) . ' ' . mysqli_error($
             <?php $count++ ?>
 
                         <li >
-                            <a href="index.php?inform_id=<?= $row['inform_id']; ?>"> <?= $row['name']; ?></a>
+                            <a href="index.php?inform_id=<?= $row['inform_id']; ?>&page=<?= $page; ?>"> <?= $row['name']; ?></a>
                         </li>
 
                     <?php endif; ?>
@@ -46,6 +48,7 @@ if (!$result): echo 'Ошибка1: ' . mysqli_errno($db) . ' ' . mysqli_error($
                 <h3>нет</h3>
     <?php endif; ?>  
         </div>
+            <!-- заголовки прочитанных сообщений-->
         <div class="read">
             <h3>прочитанные:</h3>
                 <?php $count = 0 ?>
@@ -56,7 +59,7 @@ if (!$result): echo 'Ошибка1: ' . mysqli_errno($db) . ' ' . mysqli_error($
                     <?php if (!is_null($row['readinform'])) : ?>
             <?php $count++ ?>
                         <li >
-                            <a href="index.php?inform_id=<?= $row['inform_id']; ?>"><?= $row['name']; ?></a>
+                            <a href="index.php?inform_id=<?= $row['inform_id']; ?>&page=<?= $page; ?>"><?= $row['name']; ?></a>
                         </li>
                     <?php endif; ?>
             <?php endwhile; ?>               
