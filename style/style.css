@@ -302,3 +302,10 @@ content{
 .margin{
     margin-top: -50px;
 }
+#lsb a{
+    color:#a7b3cb;
+}
+#lsb a:hover{
+    background: #606d86;
+    color: #1BA8ED!important;
+}
