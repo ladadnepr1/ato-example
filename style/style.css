@@ -15,6 +15,7 @@ body{
     font-size: 18px;
     margin: 50px auto;
     width: 30%;
+    min-width: 400px;
     border:2px solid #1da1f2;
     padding: 25px;
     border-radius: 20px 20px;
@@ -128,6 +129,7 @@ main{
 
 #lsb{
     width: 20%;
+    min-width: 250px;
     float:left;
     background: #4F5A6E;
     color: #fff;
@@ -166,6 +168,16 @@ main{
 #lsb .read li:first-child{
     padding-top: 10px;
 }
+#lsb table{
+    margin: auto;
+}
+
+#lsb input[type='submit']{
+    margin-left: 10px;
+    margin-bottom: 5px;
+    height: 40px;
+    width: 30%;
+}
 
 content{
     width: 80%;
@@ -197,6 +209,7 @@ content{
     font-size: 18px;
     margin: 50px auto;
     width: 30%;
+    min-width: 300px;
     border:2px solid #1da1f2;
     padding: 25px;
     border-radius: 20px 20px;
@@ -290,7 +303,7 @@ content{
 /* для отправки сообщений*/
 
 .select{
-     font-family: verdana;
+    font-family: verdana;
     font-size: 18px;
     display: block;
     margin: auto;
