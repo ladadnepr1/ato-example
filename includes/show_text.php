@@ -18,7 +18,7 @@ if (!$result): echo 'Ошибка1: ' . mysqli_errno($db) . ' ' . mysqli_error($
     ?>
 
     <?php else : ?>
-    <div id="lsb">
+    <div id="lsb" >
         <!--выбор сообщений 1-10 11-20 ... -->
         <?php if ($page > 0) : ?>
             <a href="index.php?page=<?= $page - 1; ?>"> <<<</a>

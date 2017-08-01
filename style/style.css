@@ -1,4 +1,4 @@
-*{
+/*{
     margin: 0;
     padding: 0;
     border-box:none;
@@ -145,6 +145,7 @@ main{
 }
 #lsb li{
     text-decoration: none;
+    overflow: hidden;
 }
 #lsb li a{
     text-decoration: none;
@@ -152,6 +153,7 @@ main{
     height: 40px;
     display: block;
     line-height: 40px;
+    
 }
 #lsb li a:hover{
     background: #606d86;
@@ -180,7 +182,7 @@ main{
 }
 
 content{
-    width: 80%;
+    width: 75%;
     background: #FFF;
     float:right;
     text-align: center;
@@ -196,10 +198,12 @@ content{
     padding: 20px;
     font-size: 24px;
     text-decoration: underline;
+    overflow: auto;
 }
 .text p{
     padding: 20px;
     font-size: 18px;
+    overflow: auto;
 }
 
 
