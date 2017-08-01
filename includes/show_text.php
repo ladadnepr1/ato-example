@@ -23,7 +23,11 @@ if (!$result): echo 'Ошибка1: ' . mysqli_errno($db) . ' ' . mysqli_error($
         <?php if ($page > 0) : ?>
             <a href="index.php?page=<?= $page - 1; ?>"> <<<</a>
         <?php endif; ?> 
-        <a href="index.php?page=<?= $page; ?>"> <?= $page * 10 + 1; ?>-<?= $end; ?></a>
+            <?php if($end==0): ?>
+                <h3>Сообщений нет </h3>
+            <?php else: ?> 
+                <a href="index.php?page=<?= $page; ?>"> <?= $page * 10 + 1; ?>-<?= $end; ?></a>
+             <?php endif; ?>
         <?php if ($end !== $count_mes) : ?>
             <a href="index.php?page=<?= $page + 1; ?>"> >>></a>
     <?php endif; ?>
