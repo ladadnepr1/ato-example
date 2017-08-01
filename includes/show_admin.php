@@ -94,8 +94,8 @@ $result_right = mysqli_query($db, $query_right);
 
     <div id="reg">
         <h3>Форма отправки сообщения</h3>
-        <p class="err"><?= $mes_error ?></p>
-        <p class="norm"><?= $mes ?></p>
+         <?php if($mes_error): ?><p class="err"><?= $mes_error ?></p><?php endif; ?>
+        <?php if($mes): ?><p class="norm"><?= $mes ?></p><?php endif; ?>
         <form action="#" method="GET" name="message" >
             <label><p>Выберите пользователей:</p>
                 <select class='select' size="2" multiple name="users[]">
